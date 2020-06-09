@@ -16,7 +16,7 @@ tp <- ttest$p.value
 
 # "the most notable part" in this script
 # create a function which shows the degree of significant difference
-# p > 0.1 "", 0.1 † p > 0.05 ".", 0.05 † p > 0.01 "–", 0.01 † p > 0.001 "––", 0.001 > p "–––"
+# p > 0.1 "", 0.1 â‰§ p > 0.05 ".", 0.05 â‰§ p > 0.01 "*", 0.01 â‰§ p > 0.001 "**", 0.001 > p "***"
 sig <- function(a) {
   if (a > 0.1) {
     return("")
@@ -25,11 +25,11 @@ sig <- function(a) {
       return(".")
     } else {
       if ((a <= 0.05)&&(a > 0.01)) {
-        return("–")
+        return("ï¼Š")
       } else {
         if ((a <= 0.01)&&(a > 0.001)) {
-          return("––")
-        } else return("–––")
+          return("ï¼Šï¼Š")
+        } else return("ï¼Šï¼Šï¼Š")
       }
     }
   }
@@ -47,7 +47,7 @@ g <- ggplot(data, aes(x=Landuse, y=Log_copy, fill=Landuse)) +
   theme(panel.grid = element_blank())
 #g2:enhance thickness etc. to paste on a paper
 g2 <- g +
-  labs(y="log copy number/gEsoil", x=NULL) +
+  labs(y="log copy number/gãƒ»soil", x=NULL) +
   theme(axis.text=element_text(size=37, face = "bold", colour = "black"),
         axis.title=element_text(size=40,face="bold", colour = "black"), 
         axis.line = element_line(size = 1.2, colour = "black"),
@@ -69,8 +69,4 @@ g3 <- g3 +
   annotate("text", x=1.5, y=7.8, label=print(sig(tp)), size=15)
 
 #save the figure as a png
-ggsave(filename = "zam_16S.png",
-       plot = g3,
-       width = 9,
-       height = 9,
-       dpi = 300)
+ggsave(filename = "zam_16S.png", plot = g3, width = 9, height = 9, dpi = 300)
