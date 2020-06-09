@@ -20,3 +20,7 @@ result <- merge(weight_mean, height_mean, by="group")
 
 #save the result
 write.csv(result, file = "body_info.csv")
+
+#make a table with mean and sd
+table <- data %>% group_by(group) %>% summarise("Weight" = mean_sd(weight, denote_sd = "pm", markup = getOption("qwraps2_markup", "markdown"))
+
