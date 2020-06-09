@@ -1,2 +1,0 @@
-
-tidyverse::tidyverse_logo()
