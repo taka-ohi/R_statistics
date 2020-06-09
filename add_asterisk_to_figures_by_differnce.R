@@ -1,4 +1,4 @@
-# want to show a significant differences
+# want to show significant differences with "*"
 
 # import data
 setwd("2019zambia_mic_community/")
