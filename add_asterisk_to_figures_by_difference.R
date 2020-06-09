@@ -25,11 +25,11 @@ sig <- function(a) {
       return(".")
     } else {
       if ((a <= 0.05)&&(a > 0.01)) {
-        return("＊")
+        return("*")
       } else {
         if ((a <= 0.01)&&(a > 0.001)) {
-          return("＊＊")
-        } else return("＊＊＊")
+          return("**")
+        } else return("***")
       }
     }
   }
