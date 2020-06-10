@@ -1,5 +1,5 @@
 # Fixed feature-table.tsv got on qiime2 and save it as "feature-table.txt"
-# qiime‚ÌƒAƒEƒgƒvƒbƒg‚Ìq2~‚Æ‚©Á‚µ‚½
+# qiimeã®ã‚¢ã‚¦ãƒˆãƒ—ãƒƒãƒˆã®q2~ã¨ã‹æ¶ˆã—ãŸ
 
 
 library(vegan)
@@ -10,23 +10,23 @@ community <- t(community)
 env <- read.table("../2019malawi_pH_CN_moisture_texture/19mal_env.txt", header = T, sep = "\t") 
 
 # rarefaction
-# ƒŠ[ƒh”‚Ì‡Œv‚ªÅ¬‚ÌƒTƒ“ƒvƒ‹‚É‡‚í‚¹‚ÄAŠeƒTƒ“ƒvƒ‹‚©‚ç‚»‚Ì”‚¾‚¯ƒ‰ƒ“ƒ_ƒ€‚É’Šo
+# ãƒªãƒ¼ãƒ‰æ•°ã®åˆè¨ˆãŒæœ€å°ã®ã‚µãƒ³ãƒ—ãƒ«ã«åˆã‚ã›ã¦ã€å„ã‚µãƒ³ãƒ—ãƒ«ã‹ã‚‰ãã®æ•°ã ã‘ãƒ©ãƒ³ãƒ€ãƒ ã«æŠ½å‡º
 rared_com <- rrarefy(community, min(rowSums(community)))
 
 # ordination
-# ˜—ñ‰»H‚½‚Ô‚ñ”÷¶•¨‚Ì\¬‚Ìˆá‚¢‚É‚æ‚è‡ˆÊ•t‚¯‚ğs‚Á‚Ä‚¢‚é
+# åºåˆ—åŒ–ï¼ŸãŸã¶ã‚“å¾®ç”Ÿç‰©ã®æ§‹æˆã®é•ã„ã«ã‚ˆã‚Šé †ä½ä»˜ã‘ã‚’è¡Œã£ã¦ã„ã‚‹
 ord <- metaMDS(rared_com)
 
 # permanova
-# “y’n—˜—p‚É‚æ‚é·‚ğ‰ğÍ
-landuse <- c(rep(1, 18), rep(2, 18)) # ‘¦‹»‚Å”’l‚Å”_’n‚ÆX—Ñ‚ğ•\‚µ‚Ä‚İ‚½
+# åœŸåœ°åˆ©ç”¨ã«ã‚ˆã‚‹å·®ã‚’è§£æ
+landuse <- c(rep(1, 18), rep(2, 18)) # å³èˆˆã§æ•°å€¤ã§è¾²åœ°ã¨æ£®æ—ã‚’è¡¨ã—ã¦ã¿ãŸ
 adonis(rared_com~landuse, method = "chao")
 
-# NMDS‚Éggplot‚ğg‚¤‚Æ‚¢‚¤‚İB‰´“I‚É‚Íplot‚æ‚èggplot‚Ì‚Ù‚¤‚ªƒpƒ‰ƒ[ƒ^‚Ì•Ï‚¦•û‚í‚©‚è‚â‚·‚¢‚Ì‚Å
+# NMDSã«ggplotã‚’ä½¿ã†ã¨ã„ã†è©¦ã¿ã€‚ä¿ºçš„ã«ã¯plotã‚ˆã‚Šggplotã®ã»ã†ãŒãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å¤‰ãˆæ–¹ã‚ã‹ã‚Šã‚„ã™ã„ã®ã§
 # using ggplot for the NMDS plot
 
-data.scores <- as.data.frame(scores(ord)) # scores‚Å˜—ñ‚ÌƒXƒRƒA‚¾‚¯æ‚èo‚µ‚Ä‚é‚ñ‚¾‚Æv‚¤
-data.scores$sample <- rownames(data.scores) # ‚±‚±ˆÈ‰º‚Í–¼‘O‚Â‚¯‚½‚èƒf[ƒ^‚Ì®Œ`
+data.scores <- as.data.frame(scores(ord)) # scoresã§åºåˆ—ã®ã‚¹ã‚³ã‚¢ã ã‘å–ã‚Šå‡ºã—ã¦ã‚‹ã‚“ã ã¨æ€ã†
+data.scores$sample <- rownames(data.scores) # ã“ã“ä»¥ä¸‹ã¯åå‰ã¤ã‘ãŸã‚Šãƒ‡ãƒ¼ã‚¿ã®æ•´å½¢
 data.scores <- cbind(data.scores, env)
 head(data.scores)
 
@@ -46,34 +46,34 @@ g <- ggplot() +
         axis.text=element_text(size=25, face = "bold", colour = "black"),
         axis.title=element_text(size=35,face="bold", colour = "black"))
   
-# ©•ª‚Ì‰ğÍ‚ÍƒTƒCƒg‚²‚Æ‚Å‚â‚Á‚½‚Ì‚Åƒtƒ@ƒZƒbƒgiˆÈ‰ºj‚à‚Â‚¯‚Ä‚¢‚½‚ªA¡‰ñ‚ÍÈ—ª  
+# è‡ªåˆ†ã®è§£æã¯ã‚µã‚¤ãƒˆã”ã¨ã§ã‚„ã£ãŸã®ã§ãƒ•ã‚¡ã‚»ãƒƒãƒˆï¼ˆä»¥ä¸‹ï¼‰ã‚‚ã¤ã‘ã¦ã„ãŸãŒã€ä»Šå›ã¯çœç•¥  
 #facet_grid(. ~ Site) + 
   #theme(strip.text.x = element_text(face="bold", size=30),
         #strip.background = element_rect(fill = "skyblue", colour = "black", size=1))
 
 # save it as a png
-# gridextra‚Íggplot‚Å•¡”‚Ì}‚ğ1–‡‚Ì‰æ‘œ‚Éû‚ß‚ç‚ê‚é‚â‚ÂBplot‚Å‚Íper‚Æ‚©‚Å‚Å‚«‚éB¡‰ñ‚ÍŠÖŒW‚È‚¢
+# gridextraã¯ggplotã§è¤‡æ•°ã®å›³ã‚’1æšã®ç”»åƒã«åã‚ã‚‰ã‚Œã‚‹ã‚„ã¤ã€‚plotã§ã¯perã¨ã‹ã§ã§ãã‚‹ã€‚ä»Šå›ã¯é–¢ä¿‚ãªã„
 png(filename = "200610mal_NMDS_all_presen.png", width = 2000, height = 750, res = 100)
 #gridExtra::grid.arrange(ga, gb, nrow=1)
 dev.off()
 
 # just wanna make polygon plots
-# ã‚Ì‚¾‚¯‚Å‚à\•ª‚»‚¤‚¾‚ªA“_‚ÌüˆÍ‚ğˆÍ‚ñ‚Å—Ìˆæ‚ğF•t‚¯‚µ‚½‚¢
+# ä¸Šã®ã ã‘ã§ã‚‚ååˆ†ãã†ã ãŒã€ç‚¹ã®å‘¨å›²ã‚’å›²ã‚“ã§é ˜åŸŸã‚’è‰²ä»˜ã‘ã—ãŸã„
 
-# hull values for farm. Farm‚Å“_‚Ìü‚è‚ğˆÍ‚Ş”’l‚½‚¿‚ğŠi”[
+# hull values for farm. Farmã§ç‚¹ã®å‘¨ã‚Šã‚’å›²ã‚€æ•°å€¤ãŸã¡ã‚’æ ¼ç´
 f_hull <- data.scores[data.scores$Landuse == "Farm", ][chull(data.scores[data.scores$Landuse == "Farm", c("NMDS1", "NMDS2")]), ] 
 # do the same things for the natural one
 n_hull <- data.scores[data.scores$Landuse == "Natural", ][chull(data.scores[data.scores$Landuse == "Natural", c("NMDS1", "NMDS2")]), ]
 
 # bind them
-# ‚±‚ê‚ÅA“y’n—˜—p‚²‚Æ‚É“_‚ğW‚ß‚½ê‡‚ÌŠO‘¤‚É‚ ‚é“_‚¾‚¯‚Ì”’lƒf[ƒ^‚ª‚Å‚«‚½
+# ã“ã‚Œã§ã€åœŸåœ°åˆ©ç”¨ã”ã¨ã«ç‚¹ã‚’é›†ã‚ãŸå ´åˆã®å¤–å´ã«ã‚ã‚‹ç‚¹ã ã‘ã®æ•°å€¤ãƒ‡ãƒ¼ã‚¿ãŒã§ããŸ
 hull.data <- rbind(f_hull, n_hull)
 
 # make the plot
 g2 <- g +
   geom_polygon(data=hull.data,
                aes(x=NMDS1,y=NMDS2,fill=Landuse, group=Landuse),
-               alpha=0.3 # —Ìˆæ‚Ì“§–¾“x
+               alpha=0.3 # é ˜åŸŸã®é€æ˜åº¦
                )
 
 # output (save)
